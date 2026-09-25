@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JUNG JIYONG — Artist</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a class="logo" href="#top">JUNG JIYONG</a>
+  <nav>
+    <a href="#2024">2024</a>
+    <a href="#2025">2025</a>
+    <a href="#2026">2026</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <p>ARTIST PORTFOLIO</p>
+    <h1>JUNG<br>JIYONG</h1>
+  </section>
+
+  <section class="year-menu" aria-label="Works by year">
+    <article class="year-card" data-year="2024">
+      <button class="year-image" aria-label="View 2024 works">
+        <img src="images/2024-01.jpg" alt="2024 representative work">
+      </button>
+      <div class="year-label"><span>2024</span><small>VIEW WORKS →</small></div>
+    </article>
+    <article class="year-card" data-year="2025">
+      <button class="year-image" aria-label="View 2025 works">
+        <img src="images/2025-01.jpg" alt="2025 representative work">
+      </button>
+      <div class="year-label"><span>2025</span><small>VIEW WORKS →</small></div>
+    </article>
+    <article class="year-card" data-year="2026">
+      <button class="year-image" aria-label="View 2026 works">
+        <img src="images/2026-01.jpg" alt="2026 representative work">
+      </button>
+      <div class="year-label"><span>2026</span><small>VIEW WORKS →</small></div>
+    </article>
+  </section>
+
+  <section class="works-section" id="works">
+    <div class="section-title">
+      <span id="section-kicker">WORKS</span>
+      <span id="section-year">2024</span>
+    </div>
+    <div id="gallery"></div>
+  </section>
+
+  <section class="placeholder">
+    <div>ARTIST NOTE</div>
+    <p>Artist note will be added later.</p>
+    <div>CV</div>
+    <p>CV will be added later.</p>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="close" id="close" aria-label="Close">×</button>
+  <button class="arrow prev" id="prev" aria-label="Previous">‹</button>
+  <div class="lightbox-inner">
+    <img id="lightbox-image" alt="">
+    <div class="caption">
+      <strong id="lightbox-title"></strong>
+      <span id="lightbox-meta"></span>
+    </div>
+  </div>
+  <button class="arrow next" id="next" aria-label="Next">›</button>
+</div>
+
+<script>
+const works = [{"year": "2024", "title": "몽유의 숲 14", "material": "한지에 수묵채색, 아크릴", "size": "80.3x116.8cm", "image": "images/2024-01.jpg"}, {"year": "2024", "title": "몽유의 숲 15", "material": "한지에 수묵채색", "size": "91x91cm", "image": "images/2024-02.jpg"}, {"year": "2024", "title": "몽유의 숲 16", "material": "한지에 수묵채색", "size": "91x91cm", "image": "images/2024-03.jpg"}, {"year": "2024", "title": "몽유의 숲 17", "material": "한지에 수묵채색", "size": "91×91cm", "image": "images/2024-04.jpg"}, {"year": "2024", "title": "몽유의 숲 18", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2024-05.jpg"}, {"year": "2024", "title": "몽유의 숲 19", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2024-06.jpg"}, {"year": "2024", "title": "몽유의 숲 20", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2024-07.jpg"}, {"year": "2024", "title": "몽유의 숲 21", "material": "한지에 수묵채색", "size": "80×100cm", "image": "images/2024-08.jpg"}, {"year": "2024", "title": "몽유의 숲 22", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2024-09.jpg"}, {"year": "2024", "title": "몽유의 숲 23", "material": "한지에 수묵채색, 아크릴", "size": "130×162cm", "image": "images/2024-10.jpg"}, {"year": "2024", "title": "몽유의 숲 24", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2024-11.jpg"}, {"year": "2024", "title": "몽유의 숲 25", "material": "한지에 수묵채색", "size": "34.8×27.3cm", "image": "images/2024-12.jpg"}, {"year": "2024", "title": "몽유의 숲 26", "material": "한지에 수묵채색, 아크릴", "size": "162×130cm", "image": "images/2024-13.jpg"}, {"year": "2024", "title": "사유의 숲 10", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2024-14.jpg"}, {"year": "2024", "title": "사유의 숲 11", "material": "한지에 수묵채색", "size": "45×53cm", "image": "images/2024-15.jpg"}, {"year": "2024", "title": "사유의 숲 12", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2024-16.jpg"}, {"year": "2024", "title": "사유의 숲 13", "material": "한지에 수묵채색", "size": "72.7x72.7cm", "image": "images/2024-17.jpg"}, {"year": "2024", "title": "사유의 숲 14", "material": "한지에 수묵채색", "size": "72.7x72.7cm", "image": "images/2024-18.jpg"}, {"year": "2024", "title": "사유의 숲 15", "material": "한지에 수묵채색, 아크릴", "size": "72.7x72.7cm", "image": "images/2024-19.jpg"}, {"year": "2024", "title": "사유의 숲 16", "material": "한지에 수묵채색", "size": "72.7x72.7cm", "image": "images/2024-20.jpg"}, {"year": "2024", "title": "사유의 숲 17", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2024-21.jpg"}, {"year": "2024", "title": "사유의 숲 18", "material": "한지에 수묵채색, 아크릴", "size": "60.6×72.7cm", "image": "images/2024-22.jpg"}, {"year": "2024", "title": "사유의 숲 19", "material": "한지에 수묵채색, 아크릴", "size": "60.6×72.7cm", "image": "images/2024-23.jpg"}, {"year": "2024", "title": "사유의 숲 20", "material": "한지에 수묵채색, 아크릴", "size": "72.7×60.6cm", "image": "images/2024-24.jpg"}, {"year": "2024", "title": "사유의 숲 9", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2024-25.jpg"}, {"year": "2025", "title": "몽유의 숲 27", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2025-01.jpg"}, {"year": "2025", "title": "몽유의 숲 28", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2025-02.jpg"}, {"year": "2025", "title": "몽유의 숲 29", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2025-03.jpg"}, {"year": "2025", "title": "몽유의 숲 30", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2025-04.jpg"}, {"year": "2025", "title": "몽유의 숲 31", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2025-05.jpg"}, {"year": "2025", "title": "몽유의 숲 32", "material": "한지에 수묵채색, 아크릴", "size": "60.6×72.7cm", "image": "images/2025-06.jpg"}, {"year": "2025", "title": "몽유의 숲 33", "material": "한지에 수묵채색, 아크릴", "size": "60.6×72.7cm", "image": "images/2025-07.jpg"}, {"year": "2025", "title": "몽유의 숲 34", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2025-08.jpg"}, {"year": "2025", "title": "몽유의 숲 35", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2025-09.jpg"}, {"year": "2025", "title": "몽유의 숲 36", "material": "한지에 수묵채색, 아크릴", "size": "90.9×72.7cm", "image": "images/2025-10.jpg"}, {"year": "2025", "title": "몽유의 숲 37", "material": "한지에 수묵채색, 아크릴", "size": "72.7×90.9cm", "image": "images/2025-11.jpg"}, {"year": "2025", "title": "몽유의 숲 38", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2025-12.jpg"}, {"year": "2025", "title": "몽유의 숲 39", "material": "한지에 수묵채색, 아크릴", "size": "90.9×72.7cm", "image": "images/2025-13.jpg"}, {"year": "2025", "title": "몽유의 숲 40", "material": "한지에 수묵채색, 아크릴", "size": "72.7×90.9cm", "image": "images/2025-14.jpg"}, {"year": "2025", "title": "몽유의 숲 41", "material": "한지에 수묵채색, 아크릴", "size": "33×76cm", "image": "images/2025-15.jpg"}, {"year": "2025", "title": "몽유의 숲 42", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2025-16.jpg"}, {"year": "2025", "title": "몽유의 숲 43", "material": "한지에 수묵채색, 아크릴", "size": "33×76cm", "image": "images/2025-17.jpg"}, {"year": "2025", "title": "몽유의 숲 44", "material": "한지에 수묵채색, 아크릴", "size": "65.1×90.9cm", "image": "images/2025-18.jpg"}, {"year": "2025", "title": "사유의 숲 21", "material": "한지에 수묵채색", "size": "91×116.8cm", "image": "images/2025-19.jpg"}, {"year": "2025", "title": "사유의 숲 22", "material": "한지에 수묵채색", "size": "45×53cm", "image": "images/2025-20.jpg"}, {"year": "2025", "title": "사유의 숲 23", "material": "한지에 수묵채색", "size": "45×53cm", "image": "images/2025-21.jpg"}, {"year": "2025", "title": "사유의 숲 24", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2025-22.jpg"}, {"year": "2025", "title": "사유의 숲 25", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2025-23.jpg"}, {"year": "2025", "title": "사유의 숲 26", "material": "한지에 수묵채색, 아크릴", "size": "116.8×91cm", "image": "images/2025-24.jpg"}, {"year": "2025", "title": "사유의 숲 27", "material": "한지에 수묵채색, 아크릴", "size": "72.7×90.9cm", "image": "images/2025-25.jpg"}, {"year": "2025", "title": "사유의 숲 28", "material": "한지에 수묵채색, 아크릴", "size": "72.7×90.9cm", "image": "images/2025-26.jpg"}, {"year": "2025", "title": "사유의 숲 29", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2025-27.jpg"}, {"year": "2025", "title": "사유의 숲 30", "material": "한지에 수묵채색, 아크릴", "size": "51×75cm", "image": "images/2025-28.jpg"}, {"year": "2025", "title": "사유의 숲 31", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2025-29.jpg"}, {"year": "2026", "title": "몽유의 숲 45", "material": "한지에 수묵채색, 아크릴", "size": "116.8×91cm", "image": "images/2026-01.jpg"}, {"year": "2026", "title": "몽유의 숲 46", "material": "한지에 수묵채색, 아크릴", "size": "116.8×91cm", "image": "images/2026-02.jpg"}, {"year": "2026", "title": "몽유의 숲 47", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2026-03.jpg"}, {"year": "2026", "title": "몽유의 숲 48", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2026-04.jpg"}, {"year": "2026", "title": "몽유의 숲 51", "material": "한지에 수묵채색, 아크릴", "size": "72.7×60.6cm", "image": "images/2026-05.jpg"}, {"year": "2026", "title": "몽유의 숲 52", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2026-06.jpg"}, {"year": "2026", "title": "사유의 숲 32", "material": "한지에 수묵채색, 아크릴", "size": "162.2×130.3cm", "image": "images/2026-07.jpg"}, {"year": "2026", "title": "사유의 숲 33", "material": "한지에 수묵채색, 아크릴", "size": "72.7×72.7cm", "image": "images/2026-08.jpg"}, {"year": "2026", "title": "사유의 숲 34", "material": "한지에 수묵채색, 아크릴", "size": "72.7×72.7cm", "image": "images/2026-09.jpg"}, {"year": "2026", "title": "사유의 숲 35", "material": "한지에 수묵채색, 아크릴", "size": "80.3×116.8cm", "image": "images/2026-10.jpg"}, {"year": "2026", "title": "사유의 숲 36", "material": "한지에 수묵채색, 아크릴", "size": "162.2×130.3cm", "image": "images/2026-11.jpg"}, {"year": "2026", "title": "사유의 숲 37", "material": "한지에 수묵채색, 아크릴", "size": "116.8×91cm", "image": "images/2026-12.jpg"}, {"year": "2026", "title": "사유의 숲 38", "material": "한지에 수묵채색, 아크릴", "size": "80.3×116.8cm", "image": "images/2026-13.jpg"}, {"year": "2026", "title": "사유의 숲 39", "material": "닥에 수묵채색, 아크릴", "size": "91×72.7cm", "image": "images/2026-14.jpg"}, {"year": "2026", "title": "사유의 숲 40", "material": "한지에 수묵채색, 아크릴", "size": "60.6×72.7cm", "image": "images/2026-15.jpg"}, {"year": "2026", "title": "사유의 숲 41", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2026-16.jpg"}, {"year": "2026", "title": "사유의 숲 42", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2026-17.jpg"}, {"year": "2026", "title": "사유의 숲 43", "material": "한지에 수묵채색, 아크릴", "size": "60.6×72.7cm", "image": "images/2026-18.jpg"}, {"year": "2026", "title": "사유의 숲 44", "material": "한지에 수묵채색, 아크릴", "size": "45×53cm", "image": "images/2026-19.jpg"}, {"year": "2026", "title": "사유의 숲 45", "material": "한지에 수묵채색, 아크릴", "size": "72.7×60.6cm", "image": "images/2026-20.jpg"}, {"year": "2026", "title": "사유의 숲 46", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2026-21.jpg"}, {"year": "2026", "title": "사유의 숲 47", "material": "한지에 수묵채색, 아크릴", "size": "60.6×72.7cm", "image": "images/2026-22.jpg"}, {"year": "2026", "title": "사유의 숲 48", "material": "한지에 수묵채색, 아크릴", "size": "91×116.8cm", "image": "images/2026-23.jpg"}, {"year": "2026", "title": "사유의 숲 49", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2026-24.jpg"}, {"year": "2026", "title": "사유의 숲 55", "material": "한지에 수묵채색, 아크릴", "size": "72.7×72.7cm", "image": "images/2026-25.jpg"}, {"year": "2026", "title": "사유의 숲 56", "material": "한지에 수묵채색, 아크릴", "size": "72.7×72.7cm", "image": "images/2026-26.jpg"}, {"year": "2026", "title": "사유의 숲 57", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2026-27.jpg"}, {"year": "2026", "title": "사유의 숲 58", "material": "한지에 수묵채색, 아크릴", "size": "53×45cm", "image": "images/2026-28.jpg"}];
+const cards = document.querySelectorAll('.year-card');
+const gallery = document.getElementById('gallery');
+const sectionYear = document.getElementById('section-year');
+const lightbox = document.getElementById('lightbox');
+const lbImage = document.getElementById('lightbox-image');
+const lbTitle = document.getElementById('lightbox-title');
+const lbMeta = document.getElementById('lightbox-meta');
+let current = [];
+let currentIndex = 0;
+
+function showYear(year, scroll=true) {
+  current = works.filter(w => w.year === year);
+  sectionYear.textContent = year;
+  gallery.innerHTML = current.map((w, i) => `
+    <button class="work" data-index="${i}">
+      <img src="${w.image}" alt="${w.title}">
+      <span>${w.title}</span>
+    </button>
+  `).join('');
+  gallery.querySelectorAll('.work').forEach(btn => {
+    btn.addEventListener('click', () => openLightbox(Number(btn.dataset.index)));
+  });
+  if (scroll) document.getElementById('works').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function openLightbox(index) {
+  currentIndex = index;
+  const w = current[currentIndex];
+  lbImage.src = w.image;
+  lbImage.alt = w.title;
+  lbTitle.textContent = w.title;
+  lbMeta.textContent = [w.year, w.material, w.size].filter(Boolean).join(' · ');
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden','false');
+  document.body.classList.add('locked');
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden','true');
+  document.body.classList.remove('locked');
+}
+
+function move(delta) {
+  currentIndex = (currentIndex + delta + current.length) % current.length;
+  openLightbox(currentIndex);
+}
+
+cards.forEach(card => {
+  const year = card.dataset.year;
+  card.querySelector('.year-image').addEventListener('click', () => showYear(year));
+  card.addEventListener('click', e => {
+    if (!e.target.closest('.year-image')) showYear(year);
+  });
+});
+
+document.getElementById('close').onclick = closeLightbox;
+document.getElementById('prev').onclick = () => move(-1);
+document.getElementById('next').onclick = () => move(1);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') move(-1);
+  if (e.key === 'ArrowRight') move(1);
+});
+
+showYear('2024', false);
+</script>
+</body>
+</html>
