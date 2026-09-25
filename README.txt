@@ -15,3 +15,11 @@ GitHub Desktop 업데이트 방법
 3. Summary에 예: Update artist note, CV and 2023 works 를 입력합니다.
 4. Commit to main → Push origin 을 누릅니다.
 5. 잠시 후 https://jung-ji-yong.github.io/ 에서 확인합니다.
+
+
+Latest update: 2026-09-25
+- Header navigation: 2026 → 2025 → 2024 → 2023, plus CV and 작가노트
+- Year cards: 2026 → 2025 → 2024 → 2023
+- Year galleries: artwork numbers sorted high-to-low
+- Main CV heading changed to Korean: 전시 이력
+- Added footer contact: E-Mail and Instagram

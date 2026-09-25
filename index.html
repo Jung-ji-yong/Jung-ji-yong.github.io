@@ -10,12 +10,13 @@
 <body>
 <header>
   <a class="logo" href="#top">JUNG JIYONG</a>
-  <nav aria-label="Year navigation">
+  <nav aria-label="Year and site navigation">
     <a href="#" data-nav-year="2026">2026</a>
     <a href="#" data-nav-year="2025">2025</a>
     <a href="#" data-nav-year="2024">2024</a>
     <a href="#" data-nav-year="2023">2023</a>
     <a href="#cv" id="cv-nav">CV</a>
+    <a href="#artist-note" id="artist-note-nav">작가노트</a>
   </nav>
 </header>
 
@@ -44,7 +45,7 @@
 </section>
 <section class="info-section cv-section" id="cv">
   <div class="info-head">
-    <div class="info-label">CV</div>
+    <div class="info-label">전시 이력</div>
     <div class="cv-actions">
       <a class="download-link" href="cv.pdf" download>DOWNLOAD PDF ↗</a>
       <button class="more-link" type="button" id="cv-more">VIEW MORE ↗</button>
@@ -83,6 +84,13 @@
   </div>
 </div>
 
+<footer class="site-footer">
+  <div class="footer-contact">
+    <a href="mailto:wjdwldyd100@naver.com">E-Mail : wjdwldyd100@naver.com</a>
+    <a href="https://www.instagram.com/kkuurrzz/" target="_blank" rel="noopener noreferrer">Instagram : @kkuurrzz</a>
+  </div>
+</footer>
+
 <div class="gallery-modal" id="gallery-modal" aria-hidden="true">
   <div class="gallery-modal-head">
     <strong id="gallery-year">2024</strong>
@@ -109,7 +117,7 @@ const works = [{"year": "2023", "title": "몽유의 숲 1", "material": "한지�
 const cards = document.querySelectorAll('.year-card');
 const galleryModal=document.getElementById('gallery-modal'),gallery=document.getElementById('gallery'),galleryYear=document.getElementById('gallery-year'),lightbox=document.getElementById('lightbox'),lbImage=document.getElementById('lightbox-image'),lbTitle=document.getElementById('lightbox-title'),lbMeta=document.getElementById('lightbox-meta');
 let current=[],currentIndex=0;
-function openGallery(year){current=works.filter(w=>String(w.year)===String(year));if(!current.length)return;galleryYear.textContent=year;gallery.innerHTML=current.map((w,i)=>`<button class="work" type="button" data-index="${i}"><img src="${w.image}" alt="${w.title}" loading="lazy"><span>${w.title}</span></button>`).join('');gallery.querySelectorAll('.work').forEach(btn=>btn.addEventListener('click',()=>openLightbox(Number(btn.dataset.index))));galleryModal.classList.add('open');galleryModal.setAttribute('aria-hidden','false');document.body.classList.add('locked');galleryModal.scrollTop=0;}
+function openGallery(year){current=works.filter(w=>String(w.year)===String(year)).sort((a,b)=>{const an=parseInt((a.title.match(/(\d+)\s*$/)||['',0])[1],10);const bn=parseInt((b.title.match(/(\d+)\s*$/)||['',0])[1],10);return bn-an;});if(!current.length)return;galleryYear.textContent=year;gallery.innerHTML=current.map((w,i)=>`<button class="work" type="button" data-index="${i}"><img src="${w.image}" alt="${w.title}" loading="lazy"><span>${w.title}</span></button>`).join('');gallery.querySelectorAll('.work').forEach(btn=>btn.addEventListener('click',()=>openLightbox(Number(btn.dataset.index))));galleryModal.classList.add('open');galleryModal.setAttribute('aria-hidden','false');document.body.classList.add('locked');galleryModal.scrollTop=0;}
 function closeGallery(){galleryModal.classList.remove('open');galleryModal.setAttribute('aria-hidden','true');if(!lightbox.classList.contains('open'))document.body.classList.remove('locked');}
 function openLightbox(index){if(!current[index])return;currentIndex=index;const w=current[index];lbImage.src=w.image;lbImage.alt=w.title;lbTitle.textContent=w.title;lbMeta.textContent=[w.year,w.material,w.size].filter(Boolean).join(' · ');lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');document.body.classList.add('locked');}
 function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');if(!galleryModal.classList.contains('open'))document.body.classList.remove('locked');}
@@ -119,7 +127,7 @@ document.querySelectorAll('[data-nav-year]').forEach(link=>link.addEventListener
 const cvModal=document.getElementById('cv-modal');
 function openCV(){cvModal.classList.add('open');cvModal.setAttribute('aria-hidden','false');document.body.classList.add('locked');cvModal.scrollTop=0;history.replaceState(null,'','#cv');}
 function closeCV(){cvModal.classList.remove('open');cvModal.setAttribute('aria-hidden','true');if(!galleryModal.classList.contains('open')&&!lightbox.classList.contains('open'))document.body.classList.remove('locked');history.replaceState(null,'','#top');}
-document.getElementById('cv-more').addEventListener('click',openCV);document.getElementById('cv-nav').addEventListener('click',e=>{e.preventDefault();openCV();});document.getElementById('cv-close').addEventListener('click',closeCV);
+document.getElementById('cv-more').addEventListener('click',openCV);document.getElementById('cv-nav').addEventListener('click',e=>{e.preventDefault();openCV();});document.getElementById('artist-note-nav').addEventListener('click',e=>{e.preventDefault();document.getElementById('artist-note').scrollIntoView({behavior:'smooth',block:'start'});});document.getElementById('cv-close').addEventListener('click',closeCV);
 document.getElementById('gallery-close').addEventListener('click',closeGallery);document.getElementById('close').addEventListener('click',closeLightbox);document.getElementById('prev').addEventListener('click',()=>move(-1));document.getElementById('next').addEventListener('click',()=>move(1));lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLightbox();});document.addEventListener('keydown',e=>{if(lightbox.classList.contains('open')){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);}else if(galleryModal.classList.contains('open')&&e.key==='Escape')closeGallery();else if(cvModal.classList.contains('open')&&e.key==='Escape')closeCV();});
 </script>
 </body>
