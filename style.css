@@ -147,3 +147,8 @@ header{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:
     column-gap:14px;
   }
 }
+
+
+/* Search-friendly artist introduction */
+.seo-intro{margin-top:18px;font-size:12px;letter-spacing:.02em;line-height:1.7;color:#555;}
+@media (max-width:700px){.seo-intro{font-size:11px;line-height:1.6;}}
