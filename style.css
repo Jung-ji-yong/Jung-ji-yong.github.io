@@ -19,3 +19,131 @@ header{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:
 /* Site footer / contact */
 .site-footer{margin:0 4vw;padding:34px 0 42px;border-top:1px solid var(--ink);display:flex;justify-content:flex-end}.footer-contact{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.footer-contact a{font-size:11px;line-height:1.5;color:#666;text-decoration:none;letter-spacing:.01em}.footer-contact a:hover{color:#111}
 @media(max-width:850px){.site-footer{margin:0 5vw;padding:30px 0 36px}.footer-contact{align-items:flex-start}.footer-contact a{font-size:10px}}
+
+/* V6 refinements: clean typography + full-width CV layout */
+.artist-note-content,
+.artist-note-content p,
+.cv-content,
+.cv-content h3,
+.cv-content .cv-plain,
+.cv-content .cv-entry,
+.cv-modal,
+.cv-modal .cv-plain,
+.cv-modal .cv-entry,
+.cv-modal .cv-block h3,
+.english-cv{
+  font-family:"Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;
+}
+.artist-note-content,
+.artist-note-content p{
+  font-size:14px;
+  line-height:2.05;
+  letter-spacing:-.02em;
+}
+.cv-content em,
+.cv-modal em{
+  font-family:inherit;
+  font-style:normal;
+}
+
+/* Two-column CV: education/solo/group on the left, art fairs/awards on the right */
+.cv-korean-preview{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:56px;
+  position:relative;
+  align-items:start;
+}
+.cv-korean-preview::before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:calc(50% - 28px);
+  width:1px;
+  background:#e2e2e2;
+}
+.cv-korean-preview > .cv-block:nth-child(1),
+.cv-korean-preview > .cv-block:nth-child(2),
+.cv-korean-preview > .cv-block:nth-child(3){grid-column:1}
+.cv-korean-preview > .cv-block:nth-child(4),
+.cv-korean-preview > .cv-block:nth-child(5){grid-column:2}
+.cv-korean-preview .cv-block{
+  width:100%;
+  padding:0 0 30px;
+  margin:0 0 30px;
+  border-bottom:1px solid #ededed;
+}
+.cv-korean-preview .cv-block:last-child{border-bottom:0}
+.cv-content h3{
+  font-size:10px;
+  line-height:1.4;
+  letter-spacing:.12em;
+  font-weight:500;
+  color:#777;
+  margin:0 0 16px;
+}
+.cv-row{
+  grid-template-columns:70px minmax(0,1fr);
+  column-gap:20px;
+  align-items:baseline;
+}
+.cv-year{
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.cv-entry{min-width:0; line-height:1.7}
+.cv-venue-inline{color:#777}
+
+/* Same full-page structure inside the detailed bilingual CV view */
+.cv-modal .cv-language{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:56px;
+  position:relative;
+  padding-bottom:75px;
+}
+.cv-modal .cv-language::before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:75px;
+  left:calc(50% - 28px);
+  width:1px;
+  background:#e2e2e2;
+}
+.cv-modal .cv-language-label,
+.cv-modal .cv-language > h2{
+  grid-column:1 / -1;
+}
+.cv-modal .cv-language > .cv-block:nth-of-type(1),
+.cv-modal .cv-language > .cv-block:nth-of-type(2),
+.cv-modal .cv-language > .cv-block:nth-of-type(3){grid-column:1}
+.cv-modal .cv-language > .cv-block:nth-of-type(4),
+.cv-modal .cv-language > .cv-block:nth-of-type(5){grid-column:2}
+.cv-modal .cv-language .cv-block{
+  width:100%;
+  padding:0 0 30px;
+  margin:0 0 30px;
+  border-bottom:1px solid #ededed;
+}
+.cv-modal .cv-row{
+  grid-template-columns:70px minmax(0,1fr);
+  column-gap:20px;
+}
+
+@media(max-width:850px){
+  .cv-korean-preview,
+  .cv-modal .cv-language{
+    display:block;
+  }
+  .cv-korean-preview::before,
+  .cv-modal .cv-language::before{display:none}
+  .cv-korean-preview .cv-block,
+  .cv-modal .cv-language .cv-block{margin-bottom:28px}
+  .cv-row,.cv-modal .cv-row{
+    grid-template-columns:62px minmax(0,1fr);
+    column-gap:14px;
+  }
+}
